@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option java_package = "com.demo.flink";
+
+package com.demo.flink;
+
+message PaymentEvent {
+  // The payment identifier
+  string id = 1;
+
+  // The sender customer ID
+  string senderID = 2;
+
+  // The receiver customer ID
+  string receiverID = 3;
+
+  // The aggregated settlement amount in cents
+  int64 amount = 4;
+
+  // The transaction timestamp in millis (Unix epoch)
+  int64 created_at = 5;
+}
