@@ -6,9 +6,9 @@ The demos include:
 * Flink SQL demo to show how it is possible to write a streaming application using only SQL.
 
 # Requirements
-* Docker: required to run Kafka via docker-compose
-* Gradle 7.6 or later version
-* Java 11 or later
+* Install [CashApp's Hermit](https://cashapp.github.io/hermit/)
+* Activate Hermit's environment `. ./bin/activate-hermit`
+* to use IntelliJ install the [IntelliJ's Hermit plugin](https://cashapp.github.io/hermit/usage/ide/?h=intellij#jetbrains-intellij-goland)
 
 # How to Run
 From the root of the project run the commands below.
