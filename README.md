@@ -20,7 +20,7 @@ Modify the heuristic and load patterns to see
 changes on how the streaming application detects fraudulent payments.
 
 ## Build
-`./gradlew build`
+`gradle build`
 
 ## Start Kafka
 `docker-compose up -d`
