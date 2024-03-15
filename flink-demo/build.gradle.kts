@@ -12,8 +12,8 @@ plugins {
 dependencies {
   implementation(Dependencies.protobufJava)
   implementation(Dependencies.protobufJavaUtil)
-  // implementation(Dependencies.flinkJava)
-  // implementation(Dependencies.flinkStreamingJava)
+  implementation(Dependencies.flinkJava)
+  implementation(Dependencies.flinkStreamingJava)
   implementation(Dependencies.flinkClients)
   implementation(Dependencies.protobuf)
   implementation(Dependencies.flinkConnector)
@@ -25,6 +25,7 @@ dependencies {
   }
   implementation(Dependencies.slf4jApi)
   implementation(Dependencies.slf4jLog4j12)
+  runtimeOnly(Dependencies.flinkRuntimeWeb)
 
   testImplementation(Dependencies.junitApi)
   testImplementation(Dependencies.assertk)

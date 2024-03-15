@@ -16,6 +16,7 @@ object Dependencies {
   val flinkConnector = "org.apache.flink:flink-connector-kafka:1.17.2"
   val flinkConnectorBase = "org.apache.flink:flink-connector-base:1.17.2"
   val flinkCore = "org.apache.flink:flink-core:1.17.2"
+  val flinkRuntimeWeb = "org.apache.flink:flink-runtime-web:1.17.2"
   val protobufGradlePlugin = "com.google.protobuf:protobuf-gradle-plugin:0.8.19"
   val protobufJavaUtil = "com.google.protobuf:protobuf-java-util:3.21.2"
   val protobufJava = "com.google.protobuf:protobuf-java:3.21.2"
