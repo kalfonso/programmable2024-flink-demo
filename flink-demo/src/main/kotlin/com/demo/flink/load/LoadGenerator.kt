@@ -67,7 +67,7 @@ class LoadGenerator(private val latch: CountDownLatch) {
 
   private fun createPublisher(): PaymentEventPublisher {
     val properties = Properties()
-    properties["bootstrap.servers"] = "localhost:9092"
+    properties["bootstrap.servers"] = "broker:29092"
     properties["batch.size"] = "0"
     properties["request.required.acks"] = "1"
     return PaymentEventPublisher(properties)

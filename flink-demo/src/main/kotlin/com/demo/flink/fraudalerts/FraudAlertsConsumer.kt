@@ -57,7 +57,7 @@ private val logger = LoggerFactory.getLogger(FraudAlertsConsumer::class.java)
 fun main(args: Array<String>) {
   val topic = "fraudulent_payment_events"
   val properties = Properties()
-  properties["bootstrap.servers"] = "localhost:9092"
+  properties["bootstrap.servers"] = "broker:29092"
   // Generate a unique consumer group so the consumer always starts from the earliest offset
   properties["group.id"] = UUID.randomUUID().toString()
   properties["auto.offset.reset"] = "earliest"

@@ -12,7 +12,6 @@ import com.demo.flink.serdes.PaymentEventDeserializationSchema
 import com.twitter.chill.protobuf.ProtobufSerializer
 import org.apache.flink.api.common.eventtime.WatermarkStrategy
 import org.apache.flink.api.java.functions.KeySelector
-import org.apache.flink.configuration.Configuration
 import org.apache.flink.connector.kafka.sink.KafkaSink
 import org.apache.flink.connector.kafka.source.KafkaSource
 import org.apache.flink.connector.kafka.source.enumerator.initializer.OffsetsInitializer
@@ -22,7 +21,7 @@ import org.apache.flink.streaming.api.windowing.time.Time
 import java.time.Duration
 
 fun main() {
-  val bootstrapServers = "localhost:9092"
+  val bootstrapServers = "broker:29092"
 
   val source = KafkaSource.builder<PaymentEvent>()
     .setBootstrapServers(bootstrapServers)
@@ -46,7 +45,7 @@ class FraudDetectionApp(
   private val sink: KafkaSink<FraudulentPaymentEvent>
 ) {
   fun execute() {
-    val env = StreamExecutionEnvironment.createLocalEnvironmentWithWebUI(Configuration())
+    val env = StreamExecutionEnvironment.getExecutionEnvironment()
     env.config.registerTypeWithKryoSerializer(
       PaymentEvent::class.java,
       ProtobufSerializer::class.java

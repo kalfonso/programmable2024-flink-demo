@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-java -cp flink-demo/build/libs/flink-demo.jar com.demo.flink.load.LoadGeneratorKt
+docker exec -it jobmanager java -cp /app/libs/flink-demo.jar com.demo.flink.load.LoadGeneratorKt
