@@ -13,7 +13,7 @@ object Dependencies {
   val flinkStreamingJava = "org.apache.flink:flink-streaming-java:1.17.2"
   val flinkClients = "org.apache.flink:flink-clients:1.17.2"
   val protobuf = "com.google.protobuf:protobuf-gradle-plugin:0.8.17"
-  val flinkConnector = "org.apache.flink:flink-connector-kafka:1.17.2"
+  val flinkConnectorKafka = "org.apache.flink:flink-connector-kafka:1.17.2"
   val flinkConnectorBase = "org.apache.flink:flink-connector-base:1.17.2"
   val flinkCore = "org.apache.flink:flink-core:1.17.2"
   val flinkProtobuf = "org.apache.flink:flink-protobuf:1.17.2"

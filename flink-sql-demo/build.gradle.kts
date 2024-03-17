@@ -11,6 +11,7 @@ application {
 
 dependencies {
   implementation(project(":protos"))
+  runtimeOnly(Dependencies.flinkConnectorKafka)
   runtimeOnly(Dependencies.flinkSQLKafkaConnector)
   runtimeOnly(Dependencies.flinkProtobuf)
 }

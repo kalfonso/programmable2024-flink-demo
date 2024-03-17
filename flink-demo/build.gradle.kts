@@ -14,7 +14,7 @@ dependencies {
   implementation(Dependencies.flinkStreamingJava)
   implementation(Dependencies.flinkClients)
   implementation(Dependencies.protobuf)
-  implementation(Dependencies.flinkConnector)
+  implementation(Dependencies.flinkConnectorKafka)
   implementation(Dependencies.flinkConnectorBase)
   implementation(Dependencies.flinkCore)
   implementation(Dependencies.kafkaTools)
