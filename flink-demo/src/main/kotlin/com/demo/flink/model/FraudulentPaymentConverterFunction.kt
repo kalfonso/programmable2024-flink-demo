@@ -7,7 +7,7 @@ class FraudulentPaymentConverterFunction :
   MapFunction<CustomerPayments, FraudulentPaymentEvent> {
   override fun map(payments: CustomerPayments): FraudulentPaymentEvent {
     return FraudulentPaymentEvent.newBuilder()
-      .setCustomerID(payments.id)
+      .setCustomerId(payments.id)
       .setAmount(payments.amount)
       .setCount(payments.count)
       .setLocation(payments.location)

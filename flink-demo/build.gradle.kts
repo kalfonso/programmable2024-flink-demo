@@ -1,15 +1,13 @@
-import com.google.protobuf.gradle.protobuf
-import com.google.protobuf.gradle.protoc
 import flink_demo.Dependencies
 
 plugins {
   application
   id("kotlin")
-  id("com.google.protobuf")
   id("com.github.johnrengelman.shadow")
 }
 
 dependencies {
+  implementation(project(":protos"))
   implementation(Dependencies.protobufJava)
   implementation(Dependencies.protobufJavaUtil)
   implementation(Dependencies.flinkJava)
@@ -33,25 +31,6 @@ dependencies {
 
 application {
   mainClass.set("com.demo.flink.FraudDetectionAppKt")
-}
-
-java {
-  sourceCompatibility = JavaVersion.VERSION_11
-  targetCompatibility = JavaVersion.VERSION_11
-}
-
-sourceSets {
-  main {
-    java {
-      srcDirs("build/generated/source/proto/main/java")
-    }
-  }
-}
-
-protobuf {
-  protoc {
-    artifact = flink_demo.Dependencies.protoc
-  }
 }
 
 tasks {

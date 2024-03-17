@@ -37,6 +37,7 @@ services:
       - |
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
+        jobmanager.rpc.port: 6123
         env.java.opts.all: --add-opens java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED
     volumes:
       - ./flink-demo/build/libs:/app/libs
@@ -53,9 +54,8 @@ services:
         jobmanager.rpc.address: jobmanager
         taskmanager.numberOfTaskSlots: 2
   sql-client:
-    image: flink:1.17.2
     container_name: sql-client
-    command: bin/sql-client.sh
+    build: .
     depends_on:
       - jobmanager
     environment:
@@ -63,5 +63,7 @@ services:
         FLINK_PROPERTIES=
         jobmanager.rpc.address: jobmanager
         rest.address: jobmanager
+    volumes:
+      - ./flink-sql-demo/build/libs:/app/libs
+      - ./flink-sql-demo/sql:/app/sql
     entrypoint: "tail -f /dev/null"
-

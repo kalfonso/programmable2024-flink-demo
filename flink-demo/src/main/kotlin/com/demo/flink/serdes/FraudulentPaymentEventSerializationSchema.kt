@@ -14,7 +14,7 @@ class FraudulentPaymentEventSerializationSchema(
   ): ProducerRecord<ByteArray, ByteArray> {
     return ProducerRecord(
       topic,
-      event.customerID.toByteArray(Charsets.UTF_8),
+      event.customerId.toByteArray(Charsets.UTF_8),
       event.toByteArray()
     )
   }

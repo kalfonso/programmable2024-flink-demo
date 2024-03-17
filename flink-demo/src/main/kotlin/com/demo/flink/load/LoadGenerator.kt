@@ -32,7 +32,7 @@ class LoadGenerator(private val latch: CountDownLatch) {
         val event = randomPaymentEvent()
         val sendStartMs = System.currentTimeMillis()
         publisher.publish(event)
-        logger.info("Published event for customer: ${event.senderID}, amount: ${event.amount}")
+        logger.info("Published event for customer: ${event.senderId}, amount: ${event.amount}")
         if (throttler.shouldThrottle(i, sendStartMs)) {
           logger.info("Throttling message $i to achieve throughput $throughput")
           throttler.throttle()
@@ -47,8 +47,8 @@ class LoadGenerator(private val latch: CountDownLatch) {
 
   private fun randomPaymentEvent(): Payments.PaymentEvent {
     return Payments.PaymentEvent.newBuilder()
-      .setSenderID("C_${Random.nextLong(0, numCustomers)}")
-      .setReceiverID("C_${Random.nextLong(0, numCustomers)}")
+      .setSenderId("C_${Random.nextLong(0, numCustomers)}")
+      .setReceiverId("C_${Random.nextLong(0, numCustomers)}")
       .setAmount(Random.nextLong(amountRange))
       .setCreatedAt(
         randomDateBetween(

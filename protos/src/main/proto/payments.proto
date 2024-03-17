@@ -9,10 +9,10 @@ message PaymentEvent {
   string id = 1;
 
   // The sender customer ID
-  string senderID = 2;
+  string sender_id = 2;
 
   // The receiver customer ID
-  string receiverID = 3;
+  string receiver_id = 3;
 
   // The aggregated settlement amount in cents
   int64 amount = 4;

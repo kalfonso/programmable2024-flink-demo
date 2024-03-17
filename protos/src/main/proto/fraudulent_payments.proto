@@ -5,10 +5,10 @@ option java_package = "com.demo.flink";
 package com.demo.flink;
 
 message FraudulentPaymentEvent {
-  string customerID = 1;
+  string customer_id = 1;
   int64 amount = 2;
-  int32 count = 3;
+  int64 count = 3;
   string location = 4;
-  int64 startTime = 5;
-  int64 endTime = 6;
+  int64 start_time = 5;
+  int64 end_time = 6;
 }

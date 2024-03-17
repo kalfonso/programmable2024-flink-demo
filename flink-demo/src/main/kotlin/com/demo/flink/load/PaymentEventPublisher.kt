@@ -20,7 +20,7 @@ class PaymentEventPublisher(props: Properties) {
   fun publish(event: Payments.PaymentEvent) {
     val record = ProducerRecord(
       topic,
-      event.senderID,
+      event.senderId,
       event
     )
 

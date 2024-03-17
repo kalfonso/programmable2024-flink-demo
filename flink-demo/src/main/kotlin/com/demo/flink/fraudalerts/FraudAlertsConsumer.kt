@@ -5,7 +5,6 @@ import org.apache.kafka.clients.consumer.KafkaConsumer
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.slf4j.LoggerFactory
 import java.time.Duration
-import java.time.Instant
 import java.util.Properties
 import java.util.UUID
 import java.util.concurrent.atomic.AtomicBoolean
@@ -36,10 +35,10 @@ class FraudAlertsConsumer(
       val records = consumer.poll(pollTimeoutMillis)
       records.forEach {
         val payment = it.value()
-        val from = Instant.ofEpochMilli(payment.startTime)
-        val to = Instant.ofEpochMilli(payment.endTime)
+        val from = payment.startTime
+        val to = payment.endTime
         logger.info(
-          "CustomerID: ${payment.customerID}, Amount: ${payment.amount}, From: $from, " +
+          "CustomerID: ${payment.customerId}, Amount: ${payment.amount}, From: $from, " +
             "To: $to, Location: ${payment.location}"
         )
       }
