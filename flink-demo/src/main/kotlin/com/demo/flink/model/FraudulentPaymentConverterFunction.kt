@@ -8,8 +8,8 @@ class FraudulentPaymentConverterFunction :
   override fun map(payments: CustomerPayments): FraudulentPaymentEvent {
     return FraudulentPaymentEvent.newBuilder()
       .setCustomerId(payments.id)
-      .setAmount(payments.amount)
-      .setCount(payments.count)
+      .setTotalAmount(payments.amount)
+      .setTotalCount(payments.count)
       .setLocation(payments.location)
       .setStartTime(payments.startTime)
       .setEndTime(payments.endTime)

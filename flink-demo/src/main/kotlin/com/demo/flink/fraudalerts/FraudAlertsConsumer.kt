@@ -38,7 +38,7 @@ class FraudAlertsConsumer(
         val from = payment.startTime
         val to = payment.endTime
         logger.info(
-          "CustomerID: ${payment.customerId}, Amount: ${payment.amount}, From: $from, " +
+          "CustomerID: ${payment.customerId}, Amount: ${payment.totalAmount}, From: $from, " +
             "To: $to, Location: ${payment.location}"
         )
       }
@@ -54,7 +54,10 @@ class FraudAlertsConsumer(
 private val logger = LoggerFactory.getLogger(FraudAlertsConsumer::class.java)
 
 fun main(args: Array<String>) {
-  val topic = "fraudulent_payment_events"
+  if (args.isEmpty()) {
+    throw RuntimeException("no topic provided")
+  }
+  val topic = args[0]
   val properties = Properties()
   properties["bootstrap.servers"] = "broker:29092"
   // Generate a unique consumer group so the consumer always starts from the earliest offset

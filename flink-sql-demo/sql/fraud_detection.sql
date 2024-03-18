@@ -24,16 +24,16 @@ WITH (
 CREATE TABLE FRAUDULENT_PAYMENTS
 (
     `customer_id` STRING,
-    `amount`      BIGINT,
-    `count`       BIGINT,
-    `start_time`  BIGINT,
-    `end_time`    BIGINT
+    `total_amount` BIGINT,
+    `total_count` BIGINT,
+    `start_time` BIGINT,
+    `end_time` BIGINT
 )
 WITH (
       'connector' = 'kafka',
       'topic' = 'fraudulent_payment_events_sql',
       'properties.bootstrap.servers' = 'broker:29092',
-      'properties.group.id' = 'fraud-detection-sql',
+      'properties.group.id' = 'fraudulent-payments-sql',
       'format' = 'protobuf',
       'protobuf.message-class-name' = 'com.demo.flink.FraudulentPayments$FraudulentPaymentEvent'
       );
@@ -41,10 +41,11 @@ WITH (
 INSERT INTO FRAUDULENT_PAYMENTS
 SELECT
     sender_id as customer_id,
-    SUM(amount) as amount,
-    COUNT(1) as `count`,
+    SUM(amount) as total_amount,
+    COUNT(*) as `total_count`,
     1000 * UNIX_TIMESTAMP(CAST(window_start AS STRING)) + EXTRACT(MILLISECOND FROM window_start) as `start_time`,
     1000 * UNIX_TIMESTAMP(CAST(window_end AS STRING)) + EXTRACT(MILLISECOND FROM window_end) as `end_time`
 FROM TABLE(
     TUMBLE(TABLE PAYMENTS, DESCRIPTOR(created_at_ts), INTERVAL '30' MINUTES))
-GROUP BY sender_id, window_start, window_end;
+GROUP BY sender_id, window_start, window_end
+HAVING SUM(amount) > 3000 or COUNT(*) > 3;

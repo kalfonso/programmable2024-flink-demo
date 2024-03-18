@@ -29,6 +29,9 @@ services:
       CLUSTER_ID: MkU3OEVBNTcwNTJENDM2Qk
   jobmanager:
     image: flink:1.17.2
+    build:
+      context: .
+      dockerfile: flink.Dockerfile
     container_name: jobmanager
     ports:
       - "8081:8081"
@@ -43,6 +46,9 @@ services:
       - ./flink-demo/build/libs:/app/libs
   taskmanager:
     image: flink:1.17.2
+    build:
+      context: .
+      dockerfile: flink.Dockerfile
     container_name: taskmanager
     depends_on:
       - jobmanager
@@ -55,7 +61,9 @@ services:
         taskmanager.numberOfTaskSlots: 2
   sql-client:
     container_name: sql-client
-    build: .
+    build:
+      context: .
+      dockerfile: sqlclient.Dockerfile
     depends_on:
       - jobmanager
     environment:
