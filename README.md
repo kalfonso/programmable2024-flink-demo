@@ -22,20 +22,26 @@ changes on how the streaming application detects fraudulent payments.
 ## Build
 `gradle build`
 
-## Start Kafka
+## Start Kafka & Flink
 `docker-compose up -d`
 
 ## Setup topics
 `./scripts/setup_topics.sh`
 
-## Run Flink app
-`./scripts/run_fraud_detection.sh`
-
 ## Simulate payment traffic
 `./scripts/run_load.sh`
 
-## Show fraudulent payments
+## Run Flink App
+`./scripts/run_fraud_detection.sh`
+
+### Show fraudulent payments
 `./scripts/show_fraudulent_payments.sh`
 
-## Stop Kafka
+## Run Flink SQL App
+`./scripts/run_fraud_detection_sql.sh`
+
+### Show fraudulent payments
+`./scripts/show_fraudulent_payments_sql.sh`
+
+## Stop Kafka & Flink
 `docker-compose down`
