@@ -43,5 +43,9 @@ changes on how the streaming application detects fraudulent payments.
 ### Show fraudulent payments
 `./scripts/show_fraudulent_payments_sql.sh`
 
+## Flink UI
+
+The Flink UI is accessible via `http://localhost:8081/`
+
 ## Stop Kafka & Flink
 `docker-compose down`
