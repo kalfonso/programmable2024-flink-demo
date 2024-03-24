@@ -10,10 +10,8 @@ application {
 }
 
 dependencies {
-  implementation(project(":protos"))
-  runtimeOnly(Dependencies.flinkConnectorKafka)
-  runtimeOnly(Dependencies.flinkSQLKafkaConnector)
-  runtimeOnly(Dependencies.flinkProtobuf)
+  runtimeOnly(project(":protos"))
+  runtimeOnly("com.google.protobuf:protobuf-java:3.21.2")
 }
 
 val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
