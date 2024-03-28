@@ -57,7 +57,7 @@ services:
     image: sql-client:1.17.2
     build:
       context: .
-      dockerfile: sqlclient.Dockerfile
+      dockerfile: sql-client/Dockerfile
     container_name: sql-client
     depends_on:
       - jobmanager
@@ -67,6 +67,5 @@ services:
         jobmanager.rpc.address: jobmanager
         rest.address: jobmanager
     volumes:
-      - ./flink-sql-demo/build/libs:/app/libs
       - ./flink-sql-demo/sql:/app/sql
     entrypoint: "tail -f /dev/null"
