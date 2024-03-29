@@ -10,8 +10,8 @@ application {
 }
 
 dependencies {
-  runtimeOnly(project(":protos"))
-  runtimeOnly("com.google.protobuf:protobuf-java:3.21.2")
+  implementation(project(":protos"))
+  implementation("com.google.protobuf:protobuf-java:3.21.2")
 }
 
 val shadowJar by tasks.getting(com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar::class) {
